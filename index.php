@@ -25,7 +25,7 @@ $messages = [
 $url = 'https://api.line.me/v2/bot/message/reply';
 $data = [
 'replyToken' => $replyToken,
-'messages' => $messages,
+'messages' => [$messages],
 ];
 
 
