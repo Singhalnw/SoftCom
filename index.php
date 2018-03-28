@@ -18,8 +18,9 @@ if (!is_null($events['events']))
 
             $text = $event['source']['userId'];
             $stringText = $event['message']['text'];
+            $textReply = "ยินดีต้อนรับ";
             $replyToken = $event['replyToken'];
-            $messages = ['type' => 'text','text' => $text."\n Message: ".$stringText  ];
+            $messages = ['type' => 'text','text' => $textReply ];
             $url = 'https://api.line.me/v2/bot/message/reply';
 
 
@@ -39,7 +40,7 @@ if (!is_null($events['events']))
             {
                 $data = [
                     'replyToken' => $replyToken,
-                    'messages' => "สวัสดี SoftCom ยินดีให้บริการ",
+                    'messages' => [$messages],
                     ];
             }
 
