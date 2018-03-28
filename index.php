@@ -64,7 +64,7 @@ if (!is_null($events['events']))
 
             $text = $event['source']['userId'];
             $replyToken = $event['replyToken'];
-            $messages = ['type' => 'text','text' => $text  ];
+            $messages = ['type' => 'text','text' => "ID ที่ได้ทำการเพิ่มเข้ามา: ".$text  ];
             $url = 'https://api.line.me/v2/bot/message/reply';
 
             $data = [
