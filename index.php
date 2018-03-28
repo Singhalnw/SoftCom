@@ -39,7 +39,7 @@ if (!is_null($events['events']))
             {
                 $data = [
                     'replyToken' => $replyToken,
-                    'messages' => [$messages],
+                    'messages' => "สวัสดี SoftCom ยินดีให้บริการ",
                     ];
             }
 
