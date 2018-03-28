@@ -26,27 +26,24 @@ $messages = ['type' => 'text','text' => $text."\n Message: ".$stringText  ];
 $url = 'https://api.line.me/v2/bot/message/reply';
 
 
-if($stringText == 'ข้อ id'){
+if($stringText == 'ขอ id'){
 
     $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($access_token);
     $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret]);
 
-    $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($replyToken);
+    $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($text);
     $response = $bot->pushMessage($pushID, $textMessageBuilder);
 
     echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
 
 }else{
-    $data = [
-        'messages' => [$messages],
-        ];
+
 }
 
 $data = [
+    'replyToken' => $replyToken,
     'messages' => [$messages],
-    
     ];
-
 
 
 $post = json_encode($data);
