@@ -18,9 +18,8 @@ if (!is_null($events['events']))
 
             $text = $event['source']['userId'];
             $stringText = $event['message']['text'];
-            $textReply = "ยินดีต้อนรับ";
             $replyToken = $event['replyToken'];
-            $messages = ['type' => 'text','text' => $textReply ];
+            $messages = ['type' => 'text','text' => $stringText ];
             $url = 'https://api.line.me/v2/bot/message/reply';
 
 
@@ -38,10 +37,7 @@ if (!is_null($events['events']))
             }
             else
             {
-                $data = [
-                    'replyToken' => $replyToken,
-                    'messages' => [$messages],
-                    ];
+                
             }
 
 
