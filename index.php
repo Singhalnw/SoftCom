@@ -59,8 +59,8 @@ if (!is_null($events['events']))
 
         if ($event['type'] == 'follow') 
         {
-
             $text = $event['source']['userId'];
+            $pushID = $text;
             $replyToken = $event['replyToken'];
             $messages = ['type' => 'text','text' => "ID ที่ได้ทำการเพิ่มเข้ามา: ".$text  ];
             $url = 'https://api.line.me/v2/bot/message/reply';
