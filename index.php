@@ -13,12 +13,12 @@ if (!is_null($events['events']))
 
     foreach ($events['events'] as $event) 
     {
-        for($i = 0; $i <= 10; $i++)
+        for($i = 0; $i <= 100; $i++)
         {
             $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($access_token);
             $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret]);
 
-            $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("99999999999");
+            $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("ลอง".$i);
             $response = $bot->pushMessage($pushID, $textMessageBuilder);
 
             echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
