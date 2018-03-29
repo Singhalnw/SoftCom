@@ -13,7 +13,8 @@ if (!is_null($events['events']))
 
     foreach ($events['events'] as $event) 
     {
-        for(var i = 0; i <= 10; i++){
+        for($i = 0; $i <= 10; $i++)
+        {
             $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($access_token);
             $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret]);
 
