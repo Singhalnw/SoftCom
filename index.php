@@ -14,7 +14,6 @@ if (!is_null($events['events']))
     foreach ($events['events'] as $event) 
     {
 
-        for(int i = 0; i <= 10; i++){
             $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($access_token);
             $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret]);
 
@@ -23,10 +22,7 @@ if (!is_null($events['events']))
 
             echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
 
-        }
-
-
-
+        
 
         if ($event['type'] == 'message' && $event['message']['type'] == 'text') 
         {
