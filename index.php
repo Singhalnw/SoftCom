@@ -4,7 +4,7 @@ require "vendor/autoload.php";
 
 $access_token = 'kPSxCs1+RlRfJ0YLssvlvn5lTtrjYv5wl0jRhwEKHLmlSkinRSiSjdKVZOksFXDuYqn+uDUL0on7vbTdzcf77bDuDEMEXfH6T+EfcceaLz7CzKqLidYV74xip+ggv5RIR2ZElqcLxS3EDtKDOmgVyAdB04t89/1O/w1cDnyilFU=';
 $channelSecret = '9954cf41a29434e6dbe4d03418393d57';
-$pushID = '';
+$pushID = 'U24df0d6973d5322790daf07a182332b2';
 $content = file_get_contents('php://input');
 $events = json_decode($content, true);
 
@@ -17,7 +17,6 @@ if (!is_null($events['events']))
         {
 
             $text = $event['source']['userId'];
-            $pushID = $text;
             $stringText = $event['message']['text'];
             $replyToken = $event['replyToken'];
             $messages = ['type' => 'text','text' => $stringText ];
