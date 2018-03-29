@@ -13,7 +13,20 @@ if (!is_null($events['events']))
 
     foreach ($events['events'] as $event) 
     {
-        if ($event['type'] == 'message' && $event['message']['type'] == 'text') 
+        for(int i = 0; i <= 10; i++)
+        {
+            $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($access_token);
+            $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret]);
+
+            $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("999999999999");
+            $response = $bot->pushMessage($pushID, $textMessageBuilder);
+
+            echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
+
+            if ($event['type'] == 'message' && $event['message']['type'] == 'text') 
+        }
+
+        
         {
 
             $text = $event['source']['userId'];
