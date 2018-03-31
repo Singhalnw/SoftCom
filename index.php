@@ -13,12 +13,6 @@ if (!is_null($events['events']))
 
     foreach ($events['events'] as $event) 
     {
-        
-
-            
-
-        
-
         if ($event['type'] == 'message' && $event['message']['type'] == 'text') 
         {
 
@@ -27,7 +21,6 @@ if (!is_null($events['events']))
             $replyToken = $event['replyToken'];
             $messages = ['type' => 'text','text' => $stringText ];
             $url = 'https://api.line.me/v2/bot/message/reply';
-
 
             if($stringText == 'ขอ id')
             {
@@ -43,10 +36,8 @@ if (!is_null($events['events']))
             }
             else
             {
-                
+          
             }
-
-
             $post = json_encode($data);
             $headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
             $ch = curl_init($url);
@@ -59,9 +50,7 @@ if (!is_null($events['events']))
             curl_close($ch);
             echo $result . "\r\n";
         }
-
-
-
+        
         if ($event['type'] == 'follow') 
         {
             $text = $event['source']['userId'];
