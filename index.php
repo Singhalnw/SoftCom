@@ -36,26 +36,30 @@ if (!is_null($events['events']))
                 $response = $bot->pushMessage($pushID, $textMessageBuilder);
 
                 echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
-
             }
-            else
-            {
-          
-            }
+            else{}
             $post = json_encode($data);
             $headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
 
-            //ติดต่อสื่อสารกับ server แบบ https
+            //เปิดการทำงานดึงขอมูล api
             $ch = curl_init();
+            //api ที่ต้องการไปเรียก
             curl_setopt( $ch, CURLOPT_URL, $url );
+            //กำหนดคำขอเป็น POST
             curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+            //ตั้งค่า RETURNTRANSFER เป็น true
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            //ส่งข้อมูล
             curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
-            curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
+            //curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+            
             curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+            //โหลดหน้าเว็บและแสดงผลลัพธ์
             $result = curl_exec($ch);
+            //สิ้นสุดการใช้ curl
             curl_close($ch);
-            echo $result . "\r\n";
+            //echo $result . "\r\n";
         }
         
         if ($event['type'] == 'follow') 
