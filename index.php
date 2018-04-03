@@ -13,6 +13,7 @@ if (!is_null($events['events']))
 
     foreach ($events['events'] as $event) 
     {
+        //ตรวจสอบ event ว่าเป็น message หรือไม่
         if ($event['type'] == 'message' && $event['message']['type'] == 'text') 
         {
             //GET UserID ที่จะส่ง
@@ -26,34 +27,33 @@ if (!is_null($events['events']))
             // Url ที่จะใช้ติดต่อ
             $url = 'https://api.line.me/v2/bot/message/reply';
 
-            if($stringText == 'ขอ id')
-            {
+            //Token ข้อผู้ใช้งาน
+            $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($access_token);
+            //ChannelSecret ข้อผู้ใช้งาน
+            $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret]);
+            //ข้อความที่ต้องการส่งไปยังผู้อื่น
+            $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($text);
+            //ทำการส่งข้อความไปยัง UserID ที่กำหนด
+            $response = $bot->pushMessage($pushID, $textMessageBuilder);
 
-                $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($access_token);
-                $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret]);
-
-                $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($text);
-                $response = $bot->pushMessage($pushID, $textMessageBuilder);
-
-                echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
-            }
-            else{}
+            //echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
+            
+            //กำหนดข้อมูลให้เป็น json
             $post = json_encode($data);
-            $headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
+            $headers = array('Content-Type: application/json', //ระบุว่าค่าที่ส่งไปเป็นแบบ json
+            'Authorization: Bearer ' . $access_token); //ส่ง Token
 
-            //เปิดการทำงานดึงขอมูล api
-            $ch = curl_init();
-            //api ที่ต้องการไปเรียก
-            curl_setopt( $ch, CURLOPT_URL, $url );
+            //เปิดการทำงานและกำหนด Url ที่ต้องการส่ง
+            $ch = curl_init($url); 
+
             //กำหนดคำขอเป็น POST
             curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
             //ตั้งค่า RETURNTRANSFER เป็น true
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             //ส่งข้อมูล
             curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
-
-            //curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-            
+            //กำหนด http header
+            curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
             curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
             //โหลดหน้าเว็บและแสดงผลลัพธ์
             $result = curl_exec($ch);
