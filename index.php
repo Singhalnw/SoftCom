@@ -38,7 +38,6 @@ if (!is_null($events['events']))
 
             //echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
             
-            //กำหนดข้อมูลให้เป็น json $post = json_encode($data);
             $headers = array('Content-Type: application/json', //ระบุว่าค่าที่ส่งไปเป็นแบบ json
             'Authorization: Bearer ' . $access_token); //ส่ง Token
 
