@@ -32,7 +32,7 @@ if (!is_null($events['events']))
             //ChannelSecret ข้อผู้ใช้งาน
             $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret]);
             //ข้อความที่ต้องการส่งไปยังผู้อื่น
-            $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($text);
+            $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("PPPPPPP");
             //ทำการส่งข้อความไปยัง UserID ที่กำหนด
             $response = $bot->pushMessage($pushID, $textMessageBuilder);
 
