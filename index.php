@@ -34,7 +34,7 @@ if (!is_null($events['events']))
             //ข้อความที่ต้องการส่งไปยังผู้อื่น
             $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($text);
             //ทำการส่งข้อความไปยัง UserID ที่กำหนด
-            $response = $bot->pushMessage($pushID, $textMessageBuilder);
+            $response = $bot->pushMessage($text, $textMessageBuilder);
 
             //echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
             
