@@ -17,7 +17,7 @@ if (!is_null($events['events']))
         if ($event['type'] == 'message' && $event['message']['type'] == 'text') 
         {
             //GET UserID ที่จะส่ง
-            $text = $event['source']['userId'];
+            $text = $event['source']['type'];
             //ข้อความที่ส่ง
             $stringText = $event['message']['text'];
             //GET Token
@@ -32,7 +32,7 @@ if (!is_null($events['events']))
             //ChannelSecret ข้อผู้ใช้งาน
             $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret]);
             //ข้อความที่ต้องการส่งไปยังผู้อื่น
-            $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($text."|".$stringText);
+            $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($text);
             //ทำการส่งข้อความไปยัง UserID ที่กำหนด
             $response = $bot->pushMessage("U24df0d6973d5322790daf07a182332b2", $textMessageBuilder);
 
