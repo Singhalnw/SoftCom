@@ -38,7 +38,7 @@ if (!is_null($events['events']))
 
             //echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
             
-            $headers = array('Content-Type: application/json', //ระบุว่าค่าที่ส่งไปเป็นแบบ json
+            $headers = array('Content-Type: application/json',
             'Authorization: Bearer ' . $access_token); //ส่ง Token
 
             //เปิดการทำงานและกำหนด Url ที่ต้องการส่ง
