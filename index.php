@@ -22,7 +22,7 @@ if (!is_null($events['events']))
             $stringText = $event['message']['text'];
             //GET Token
             $replyToken = $event['replyToken'];
-            //$messages = ['type' => 'text','text' => $stringText ];
+            $messages = ['type' => 'text','text' => $stringText ];
 
             // Url ที่จะใช้ติดต่อ
             $url = 'https://api.line.me/v2/bot/message/reply';
@@ -34,7 +34,7 @@ if (!is_null($events['events']))
             //ข้อความที่ต้องการส่งไปยังผู้อื่น
             $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($text);
             //ทำการส่งข้อความไปยัง UserID ที่กำหนด
-            $response = $bot->pushMessage($pushID, $textMessageBuilder);
+            $response = $bot->pushMessage($pushID, $textMessageBuilder,$messages);
 
             //echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
             
