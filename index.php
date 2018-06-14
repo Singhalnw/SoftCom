@@ -4,7 +4,7 @@ require "vendor/autoload.php"; //เรียกใช้งานไฟล์ s
 
 $access_token = 'atK53EyYXAxbjRAhYtx3nRpL+CfSoBi6vIvIaube7fvxZ7gQHSGqjk3d1v5B/4yuYqn+uDUL0on7vbTdzcf77bDuDEMEXfH6T+EfcceaLz6oxxSHkX/BjzSpAx8+j2rfA+4XXwQ+nljsU8X16ZJL3gdB04t89/1O/w1cDnyilFU=';
 $channelSecret = '9954cf41a29434e6dbe4d03418393d57';
-$pushID = 'U24df0d6973d5322790daf07a182332b2';
+//$pushID = 'U24df0d6973d5322790daf07a182332b2';
 $content = file_get_contents('php://input');
 $events = json_decode($content, true); //แปลงเป็น json
 
@@ -32,9 +32,9 @@ if (!is_null($events['events']))
             //ChannelSecret ข้อผู้ใช้งาน
             $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret]);
             //ข้อความที่ต้องการส่งไปยังผู้อื่น
-            $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("PPPPPPP");
+            $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($text);
             //ทำการส่งข้อความไปยัง UserID ที่กำหนด
-            $response = $bot->pushMessage($pushID, $textMessageBuilder);
+            $response = $bot->pushMessage("U24df0d6973d5322790daf07a182332b2", $textMessageBuilder);
 
             //echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
             
